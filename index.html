@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yamini Chitikela | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      overflow-y: scroll;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+
+    body::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    body::-webkit-scrollbar-thumb {
+      background-color: #5B4EFF;
+      opacity: 75%;
+    }
+
+    nav {
+      position: fixed;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      margin: 10px 0;
+      padding: 10px 15px;
+      background-color: #1a1a1a;
+      border-left: 4px solid transparent;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #fff;
+      background-color: #2a2a2a;
+      border-left: 4px solid #5B4EFF;
+      opacity: 75%
+    }
+
+    .horizontal-scroll {
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      height: 100vh;
+      width: max-content;
+      scroll-snap-type: x mandatory;
+      will-change: transform;
+      transition: transform 0.3s ease;
+    }
+
+    section {
+      scroll-snap-align: start;
+      width: 100vw;
+      height: 100vh;
+      flex-shrink: 0;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    section h1 {
+      font-size: 2.5rem;
+      color: #5B4EFF;
+      opacity: 75%;
+      margin-bottom: 10px;
+    }
+
+    .typing {
+      color: #5B4EFF;
+      font-weight: 600;
+      border-right: 2px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    section p {
+      font-size: 1.1rem;
+      color: #ccc;
+      max-width: 700px;
+      margin-bottom: 20px;
+    }
+
+    section img {
+      max-width: 500px;
+      width: 90%;
+      border-radius: 20px;
+      margin-top: 30px;
+    }
+
+    .spacer {
+      height: 400vh;
+    }
+    .project-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.project-card {
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  width: 280px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(91, 78, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+.project-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.project-card h3 {
+  color: #5B4EFF;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.project-card a {
+  display: inline-block;
+  padding: 8px 16px;
+  color: #fff;
+  background-color: #5B4EFF;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.project-card a:hover {
+  background-color: #7c6dff;
+}
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.skill-card {
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  width: 160px;
+  height: 160px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(91, 78, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.skill-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 18px rgba(91, 78, 255, 0.4);
+}
+
+.skill-card img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+}
+
+.skill-card span {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+.contact-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  width: 220px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(91, 78, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+}
+
+.contact-card img {
+  width: 40px;
+  height: 40px;
+
+}
+
+.contact-card a {
+  display: inline-block;
+  font-size: 0.95rem;
+  color: #ccc;
+  text-decoration: none;
+  word-break: break-word;
+  transition: color 0.3s ease;
+}
+
+.contact-card a:hover {
+  color: #5B4EFF;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#about">👋 Meet Yamini</a>
+  <a href="#projects">🚀 My Work</a>
+  <a href="#skills">🛠️ My Creative Toolkit</a>
+  <a href="#contact">📬 Let’s Connect</a>
+</nav>
+
+<!-- Horizontal content -->
+<div class="horizontal-scroll" id="horizontalScroll">
+  <section id="about" data-aos="fade-up">
+    <h1>Hi, I'm Yamini</h1>
+    <div class="typing" id="typing"></div>
+    <p>I’m a developer who blends AI with human-centered design. I create web apps that impact lives, especially in the behavioral health space.</p>
+    <img src="Working Work From Home GIF by JetBrains.gif" alt="Developer working illustration" />
+  </section>
+
+  
+  <section id="projects" data-aos="fade-up">
+  <h1>Projects</h1>
+  <div class="project-grid">
+    <div class="project-card" data-aos="zoom-in-up" data-aos-delay="100">
+      <img src="mental_health.png" alt="Digital Twin Predictor">
+      <h3>Digital Twin Behavioural Health Predictor</h3>
+      <p>A research-driven AI model that leverages mobile sensor data and mental health surveys to predict early signs of patient disengagement, supporting timely clinical intervention and personalized care planning.</p>
+      <a href="https://github.com/yaminichitikela/EarlyPatientDropout" target="_blank">In works </a>
+    </div>
+
+    <div class="project-card" data-aos="zoom-in-up" data-aos-delay="200">
+      <img src="chatbot_ai_course_rec.jpeg" alt="HexaHealth Dashboard">
+      <h3>Course Recommendation Chatbot</h3>
+      <p>An AI-powered chatbot that suggests personalized university courses based on a student’s interests, academic history, and career goals — built using NLP and machine learning for intelligent, conversational recommendations.</p>
+      <a href="https://github.com/yaminichitikela/Course-Recommendation-Chatbot" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="project-card" data-aos="zoom-in-up" data-aos-delay="300">
+      <img src="Article-34-ecommerce-design-03-1024x674.png.webp" alt="Survey Builder">
+      <h3>E-Commerce & Hospitality Platforms</h3>
+      <p>Developed multiple dynamic web applications, including full-featured e-commerce platforms and a hotel reservation system, with secure authentication, payment integration, and real-time booking functionality.</p>
+      <a href="https://github.com/yaminichitikela/ESports_WebSite-master" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="project-card" data-aos="zoom-in-up" data-aos-delay="400">
+      <img src="computer-security-with-login-password-padlock_107791-16191.avif" alt="Survey Builder">
+      <h3>Graphical Password Segmentation </h3>
+      <p>A secure login system using graphical password segmentation, where users must correctly rearrange image tiles to authenticate — adding an intuitive and tamper-resistant layer of security beyond traditional text-based passwords.</p>
+      <a href="https://github.com/yaminichitikela/Graphical-password-segmentation" target="_blank">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section id="skills" data-aos="fade-up">
+  <h1>What I Build With</h1>
+  <div class="skills-grid">
+    <!-- Full Stack -->
+    <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+      <span>JavaScript</span>
+    </div>
+    <div class="skill-card" data-aos="zoom-in" data-aos-delay="150">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
+      <span>React.js</span>
+    </div>
+    <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg" alt="Laravel" />
+      <span>Laravel</span>
+    </div>
+    <div class="skill-card" data-aos="zoom-in" data-aos-delay="250">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" />
+      <span>PHP</span>
+    </div>
+    <div class="skill-card" data-aos="zoom-in" data-aos-delay="300">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+      <span>MySQL</span>
+    </div>
+
+    <!-- AI/ML -->
+    <div class="skill-card" data-aos="zoom-in" data-aos-delay="350">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+      <span>Python</span>
+    </div>
+    <div class="skill-card" data-aos="zoom-in" data-aos-delay="400">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" />
+      <span>TensorFlow</span>
+    </div>
+    <div class="skill-card" data-aos="zoom-in" data-aos-delay="450">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" />
+      <span>NumPy</span>
+    </div>
+    <div class="skill-card" data-aos="zoom-in" data-aos-delay="500">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" />
+      <span>Pandas</span>
+    </div>
+    <div class="skill-card" data-aos="zoom-in" data-aos-delay="550">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter" />
+      <span>Jupyter</span>
+    </div>
+
+    <!-- Tools -->
+    <div class="skill-card" data-aos="zoom-in" data-aos-delay="600">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+      <span>Git</span>
+    </div>
+    <div class="skill-card" data-aos="zoom-in" data-aos-delay="650">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+      <span>GitHub</span>
+    </div>
+    <div class="skill-card" data-aos="zoom-in" data-aos-delay="700">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aws/aws-original.svg" alt="AWS" />
+      <span>AWS</span>
+    </div>
+  </div>
+</section>
+
+
+<section id="contact" data-aos="fade-up">
+  <h1>Contact</h1>
+  <div class="contact-grid">
+    <!-- Gmail -->
+    <div class="contact-card" data-aos="zoom-in" data-aos-delay="100">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email Icon">
+      <a href="mailto:yaminichitikela@gmail.com">Mail</a>
+    </div>
+
+    <!-- LinkedIn -->
+    <div class="contact-card" data-aos="zoom-in" data-aos-delay="200">
+      <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn Icon">
+      <a href="https://www.linkedin.com/in/yaminichitikela/" target="_blank">Linkedin</a>
+    </div>
+
+    <!-- GitHub -->
+    <div class="contact-card" data-aos="zoom-in" data-aos-delay="300">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub Icon">
+      <a href="https://github.com/yaminichitikela" target="_blank">Github</a>
+    </div>
+  </div>
+</section>
+
+
+</div>
+
+<div class="spacer" id="spacer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+
+  const horizontalScroll = document.getElementById('horizontalScroll');
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+  const spacer = document.getElementById('spacer');
+
+  function setSpacerHeight() {
+    spacer.style.height = `${window.innerWidth * sections.length}px`;
+  }
+
+  setSpacerHeight();
+  window.addEventListener('resize', setSpacerHeight);
+
+  window.addEventListener('scroll', () => {
+    horizontalScroll.style.transform = `translateX(-${window.scrollY}px)`;
+  });
+
+  window.addEventListener('scroll', () => {
+    const scrollX = window.scrollY;
+    sections.forEach((section, i) => {
+      const start = i * window.innerWidth;
+      const end = start + window.innerWidth;
+      if (scrollX >= start && scrollX < end) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        navLinks[i].classList.add('active');
+      }
+    });
+  });
+
+  // Typing effect
+  const roles = ["Full Stack Developer", "Web Developer", "AI Enthusiast"];
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingElement = document.getElementById("typing");
+const typingSpeed = 100;
+const deletingSpeed = 50;
+const pauseBetweenWords = 1000;
+
+function typeWriter() {
+  const currentRole = roles[roleIndex];
+
+  if (!isDeleting) {
+    typingElement.textContent = currentRole.substring(0, charIndex++);
+    if (charIndex > currentRole.length) {
+      // Pause before deleting, except for the last word
+      if (roleIndex === roles.length - 1) return; // Final title – stop here
+      isDeleting = true;
+      setTimeout(typeWriter, pauseBetweenWords);
+      return;
+    }
+  } else {
+    typingElement.textContent = currentRole.substring(0, charIndex--);
+    if (charIndex === 0) {
+      isDeleting = false;
+      roleIndex++;
+    }
+  }
+
+  setTimeout(typeWriter, isDeleting ? deletingSpeed : typingSpeed);
+}
+
+typeWriter();
+
+AOS.init({
+  duration: 1000,
+  once: true, // Only animate once when section enters
+  easing: 'ease-out-cubic',
+});
+
+
+
+</script>
+
+</body>
+</html>

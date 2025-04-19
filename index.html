@@ -7,6 +7,55 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
+    @media screen and (max-width: 768px) {
+  nav {
+    display: none;
+  }
+
+  .horizontal-scroll {
+    position: static;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    transform: none !important;
+  }
+
+  section {
+    height: auto;
+    width: 100%;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  section img {
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  .project-grid,
+  .skills-grid,
+  .contact-grid {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .project-card,
+  .skill-card,
+  .contact-card {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .typing {
+    font-size: 1.4rem;
+  }
+
+  .spacer {
+    display: none;
+  }
+}
     * {
       margin: 0;
       padding: 0;
@@ -480,6 +529,12 @@ AOS.init({
   once: true, // Only animate once when section enters
   easing: 'ease-out-cubic',
 });
+  window.addEventListener('scroll', () => {
+  if (window.innerWidth > 768) {
+    horizontalScroll.style.transform = `translateX(-${window.scrollY}px)`;
+  }
+});
+
 
 
 

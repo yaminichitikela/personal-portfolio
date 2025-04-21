@@ -7,55 +7,32 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
-    @media screen and (max-width: 768px) {
-  nav {
-    display: none;
-  }
-
+  
+ @media screen and (max-width: 768px) {
   .horizontal-scroll {
-    position: static;
-    flex-direction: column;
-    height: auto;
-    width: 100%;
+    position: static !important;
+    display: block !important;
     transform: none !important;
+    width: 100% !important;
+    height: auto !important;
   }
 
   section {
-    height: auto;
-    width: 100%;
+    height: auto !important;
+    width: 100% !important;
     padding: 40px 20px;
-    text-align: center;
+    display: block;
   }
 
-  section img {
-    max-width: 100%;
-    margin-top: 20px;
-  }
-
-  .project-grid,
-  .skills-grid,
-  .contact-grid {
-    flex-direction: column;
-    gap: 20px;
-    padding: 0 10px;
-  }
-
-  .project-card,
-  .skill-card,
-  .contact-card {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-
-  .typing {
-    font-size: 1.4rem;
-  }
-
-  .spacer {
+  #spacer {
     display: none;
   }
+   #navbar{
+     display:none !important;
+   }
+     
 }
+
     * {
       margin: 0;
       padding: 0;
@@ -314,7 +291,7 @@
 </head>
 <body>
 
-<nav>
+<nav id="navbar">
   <a href="#about">👋 Meet Yamini</a>
   <a href="#projects">🚀 My Work</a>
   <a href="#skills">🛠️ My Creative Toolkit</a>
@@ -473,8 +450,12 @@
   window.addEventListener('resize', setSpacerHeight);
 
   window.addEventListener('scroll', () => {
+  if (window.innerWidth > 768) {
     horizontalScroll.style.transform = `translateX(-${window.scrollY}px)`;
-  });
+  } else {
+    horizontalScroll.style.transform = `none`;
+  }
+});
 
   window.addEventListener('scroll', () => {
     const scrollX = window.scrollY;
@@ -528,12 +509,13 @@ AOS.init({
   once: true, // Only animate once when section enters
   easing: 'ease-out-cubic',
 });
-  window.addEventListener('scroll', () => {
+window.addEventListener('scroll', () => {
   if (window.innerWidth > 768) {
     horizontalScroll.style.transform = `translateX(-${window.scrollY}px)`;
+  } else {
+    horizontalScroll.style.transform = `none`;
   }
 });
-
 
 
 
